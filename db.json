@@ -1,0 +1,22 @@
+{
+  "cart": [
+    {
+      "id": 2,
+      "images": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png",
+      "title": "Eyeshadow Palette with Mirror",
+      "price": 19
+    },
+    {
+      "id": 6,
+      "images": "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/1.png",
+      "title": "Calvin Klein CK One",
+      "price": 50
+    },
+    {
+      "id": 11,
+      "images": "https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/1.png",
+      "title": "Annibale Colombo Bed",
+      "price": 1894
+    }
+  ]
+}

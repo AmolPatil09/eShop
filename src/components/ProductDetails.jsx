@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useParams } from 'react-router-dom'
-import { getData } from '../ApiHelper/ApiCall';
+import { getData, postData, postDataForCart } from '../ApiHelper/ApiCall';
 import '../css/ProductDetails.css'
 import RatingComp from './RatingComp';
 import Loading from './Loading';
@@ -10,6 +10,7 @@ export default function ProductDetails() {
  const [data,setData]=useState([]);
  const [isLoading,setIsLoding]=useState(true);
  const [errorMessage,setErrorMessage]=useState('')
+ const [successMessage,setSuccessMessage]=useState('')
  useEffect(()=>{
     getData('https://dummyjson.com/products/'+id)
     .then((res)=>{
@@ -24,6 +25,27 @@ export default function ProductDetails() {
         setIsLoding(false)
     })
     },[])
+
+    const addToCart=(data)=>{
+       const cartData={
+           id:data.id,
+           images:data.images[0],
+           title:data.title,
+           price:Math.round(data.price-((data.price/100)*data.discountPercentage))
+
+        }
+        postDataForCart('http://localhost:5000/cart',cartData)
+        .then((res)=>{
+           setSuccessMessage("Product Add to the cart please checout from cart and complete order")
+            setTimeout(() => {
+                setSuccessMessage('')
+            }, 3000);
+          })
+          .catch(()=>{
+           setErrorMessage('Server Not Responce')
+          })
+        
+    }
   return (
    isLoading?<Loading/>: <div className=' container mtr-2'>
    <div className='d-md-flex container mt-4 '>
@@ -38,7 +60,12 @@ export default function ProductDetails() {
              <h6 className="card-text "><s>Rs. {data.price}</s></h6>
              <h6 className="card-text ms-3">Rs. {Math.round(data.price-((data.price/100)*data.discountPercentage))}</h6>
              </div>
-             <button className='btn btn-success mt-3'>Add To Cart</button>
+           <div className='d-flex'>
+           <button className='btn btn-success m-2' onClick={()=>{
+                addToCart(data)
+             }}>Add To Cart</button>
+             {successMessage&&<p className='alert alert-success p-2 m-2'>{successMessage}</p>}
+           </div>
        </div>
       
    </div>

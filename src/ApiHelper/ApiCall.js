@@ -21,3 +21,14 @@ import { BASE_URL } from './ApiConfig';
         return err;
     })
  }
+ export const postDataForCart=(url,data)=>{
+    console.log(url);
+    console.log(data);
+    return axios.post(url,data)
+    .then((res)=>{
+        return res.data
+    })
+    .catch((err)=>{
+        return err;
+    })
+ }

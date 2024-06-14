@@ -35,18 +35,15 @@ const NavigationBar = () => {
         </div>
         <div className='d-flex d-md-none ' >
           <div className="nav ms-auto d-sm-flex d-md-none justify-content-between">
-          <Link className='nav-link text-black' to="/cart">cart</Link>
+          <Link className='nav-link text-black' to="/cart"><FaCartArrowDown className='icon'/></Link>
             <div onClick={() => { setShowMobileMenu(!showMobileMenu) 
-            }}><RiMenu2Fill/></div>
+            }}><RiMenu2Fill className='icon mt-2'/></div>
           </div>
         </div>
       </div>
       {
         showMobileMenu&&<div>{isLogin ? <div className="nav row text-start d-md-none container ">
           <Link className='nav-link text-black' to="/home">Home</Link>
-          <Link className='nav-link text-black' to="/services">Services</Link>
-          <Link className='nav-link text-black' to="/conatact">Contact</Link>
-          <Link className='nav-link text-black' to="/about">About</Link>
           <Link className='nav-link text-black' to="/register">Logout</Link>
         </div> : <div className="nav row text-start d-md-none conta">
           <Link className='nav-link text-black' to="/login">Login</Link>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../css/ProductCard.css'
 
-export default function ProductCard({vender}) {
+export default function ProductCard({vender,addToCart}) {
     const navigate=useNavigate()
   return (
     <div>
@@ -16,16 +16,12 @@ export default function ProductCard({vender}) {
               </div>
               
               <div className='d-flex'>
-              <button className='btn btn-primary button '
+              <button className='btn btn-primary button form-control '
               onClick={()=>{
                 navigate(`/product/${vender.id}`)
               }}
-              >Details</button>
-              <button className='btn btn-primary button'
-              onClick={()=>{
-                navigate(`/vender/${vender.id}`)
-              }}
-              >Add to cart</button>
+              >More Details</button>
+            
               </div>
             </div>
           </div>
