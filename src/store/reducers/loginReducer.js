@@ -1,7 +1,7 @@
 import { CHANGE_LOGIN_STATE } from "../actions/actionType";
 
 const initialState={
-    islogin:false
+    islogin:true
 }
 
 const loginReducer=(state=initialState,action)=>{

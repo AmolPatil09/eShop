@@ -5,7 +5,7 @@ import CartCard from './CartCard'
 
 
 export default function Cart() {
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
   const [isLoading, setIsLoding] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
   const [totalPrice,setTotalPrice]=useState(0)
@@ -39,8 +39,12 @@ export default function Cart() {
     let newprice=totalPrice+quantity*price-prevQuantity*price;
     setTotalPrice(newprice);
    }
+
+  if(errorMessage)return<div className='errorMessage d-flex align-items-center justify-content-center'>{errorMessage}</div>
   return (
-    <div> {
+    <div>
+      
+      {
       isLoading ?<Loading/>: <>
         <div className="card m-auto d-none d-md-flex mt-3 d-flex flex-row  align-items-center justify-content-evenly w-sm-[100%] container" style={{ minHeight: "5rem", }} >
 
